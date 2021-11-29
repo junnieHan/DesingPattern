@@ -37,3 +37,14 @@ DesignPattern/x64/Debug/DesignPattern.tlog/link.write.1.tlog
 x64/Debug/DesignPattern.exe
 x64/Debug/DesignPattern.ilk
 x64/Debug/DesignPattern.pdb
+.vs/ProjectSettings.json
+.vs/slnx.sqlite
+.vs/DesignPattern/v16/Browse.VC.db-shm
+.vs/DesignPattern/v16/Browse.VC.db-wal
+.vs/DesignPattern/v16/Browse.VC.opendb
+.vs/DesignPattern/v16/ipch/AutoPCH/7422562445659c7a/MAIN.ipch
+.vs/DesignPattern/v16/ipch/AutoPCH/d34df5b7a8949044/BUILDERPATTERN.ipch
+.vs/DesignPattern/v16/ipch/AutoPCH/e0270ce2e3a699ab/FACTORYPATTERN.ipch
+.vs/DesingPattern/v16/.suo
+.vs/DesingPattern/v16/Browse.VC.db
+DesignPattern/x64/Debug/FactoryPattern.obj
