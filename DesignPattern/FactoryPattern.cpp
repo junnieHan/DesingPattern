@@ -22,7 +22,6 @@ public:
 
 class AnimalCreator
 {
-	//
 public:
 	virtual std::shared_ptr<Animal> create()
 	{
