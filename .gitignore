@@ -48,3 +48,6 @@ x64/Debug/DesignPattern.pdb
 .vs/DesingPattern/v16/.suo
 .vs/DesingPattern/v16/Browse.VC.db
 DesignPattern/x64/Debug/FactoryPattern.obj
+*.ipch
+*.obj
+*.ilk

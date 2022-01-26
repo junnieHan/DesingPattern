@@ -1,79 +1,85 @@
-#include <string.h>
+ï»¿#include <string.h>
 #include <iostream>
-//Builder PatternÀº ´Ü¼øÇÏ°Ô °³º° °´Ã¼ÀÇ »ı¼ºÀ» º°µµÀÇ ´Ù¸¥ Å¬·¡½º¿¡ À§ÀÓ(CatBuilder)
-//ÀÚ±âÀÚ½ÅÀ» Return ÇÏ¿© Èå¸§½Ä ºô´õ°¡ °¡´ÉÇÏ´Ù.
+//Builder Patternì€ ë‹¨ìˆœí•˜ê²Œ ê°œë³„ ê°ì²´ì˜ ìƒì„±ì„ ë³„ë„ì˜ ë‹¤ë¥¸ í´ë˜ìŠ¤ì— ìœ„ì„(CatBuilder)
+//ë³µì¡í•œ ê°ì²´ë¥¼ ìƒì„±í•˜ëŠ” í´ë˜ìŠ¤ì™€ í‘œí˜„í•˜ëŠ” í´ë˜ìŠ¤ë¥¼ ë¶„ë¦¬í•˜ì—¬, ë™ì¼í•œ ì ˆì°¨ì—ì„œë„ ì„œë¡œ ë‹¤ë¥¸ í‘œí˜„ì„ ìƒì„±í•˜ëŠ” ë°©ë²• ì œê³µ
+// ì‰½ê²Œ ìƒê°í•˜ë©´ ë³µì¡í•œ ìƒì„± ê³¼ì •ì˜ ê°ì²´ë¥¼ ëŒ€ì‹  ìƒì„±í•´ì£¼ëŠ” í´ë˜ìŠ¤
+//ìê¸°ìì‹ ì„ Return í•˜ì—¬ íë¦„ì‹ ë¹Œë”ê°€ ê°€ëŠ¥í•˜ë‹¤.
 
-//class Cat
-//{
-//public:
-//	explicit Cat(const int nHeight, const int nWeight, const std::string color):m_nHeight{nHeight}, m_nWeight{nWeight}, m_color{color}
-//	{};
-//
-//	void print()
-//	{
-//		std::cout << m_nHeight << "cm" << m_nWeight << "kg" << m_color << std::endl;
-//	};
-//
-//private:
-//	int m_nHeight{ 0 };
-//	int m_nWeight{ 0 };
-//	std::string m_color;
-//};
-//
-//class CatBuilder
-//{
-//public:
-//	CatBuilder() = default;
-//
-//	CatBuilder& setHeight(int nHeight)
-//	{
-//		m_nHeight = nHeight;
-//		return *this;
-//	}
-//	CatBuilder& setWeight(int nWeight)
-//	{
-//		m_nWeight = nWeight;
-//		return *this;
-//	}
-//	CatBuilder& setColor(std::string color)
-//	{
-//		m_color = color;
-//		return *this;
-//	}
-//
-//	std::shared_ptr<Cat> Build() 
-//	{
-//		return cat = std::make_shared<Cat>(m_nHeight, m_nWeight, m_color);
-//	}
-//
-//private:
-//	std::shared_ptr<Cat> cat;
-//
-//	int m_nHeight{ 0 };
-//	int m_nWeight{ 0 };
-//	std::string m_color;
-//};
-//
-////¾Æ·¡¿Í °°ÀÌ ÀÇµµ¸¦ ¾Ë·Á ÁÙ ¼ö ÀÖ°í, Ã³À½¿¡ »ı¼ºÀÚÀÇ argument¸¦ initÀ» ÇÏ°í ½ÃÀÛ ÇÒ ¼ö ÀÖ´Ù.
-//
-//class WhiteBuilder:public CatBuilder
-//{
-//public:
-//	WhiteBuilder() 
-//	{
-//		__super::CatBuilder();
-//		setColor("white");
-//	};
-//};
-//
-//class BlackBuilder :public CatBuilder
-//{
-//public:
-//	BlackBuilder() {
-//		__super::CatBuilder();
-//		setColor("black");
-//	};
-//};
+namespace BuilderPtn
+{
+	class Cat
+	{
+	public:
+		explicit Cat(const int nHeight, const int nWeight, const std::string color) :m_nHeight{ nHeight }, m_nWeight{ nWeight }, m_color{ color }
+		{};
+
+		void print()
+		{
+			std::cout << m_nHeight << "cm" << m_nWeight << "kg" << m_color << std::endl;
+		};
+
+	private:
+		int m_nHeight{ 0 };
+		int m_nWeight{ 0 };
+		std::string m_color;
+	};
+
+	class CatBuilder
+	{
+	public:
+		CatBuilder() = default;
+
+		CatBuilder& setHeight(int nHeight)
+		{
+			m_nHeight = nHeight;
+			return *this;
+		}
+		CatBuilder& setWeight(int nWeight)
+		{
+			m_nWeight = nWeight;
+			return *this;
+		}
+		CatBuilder& setColor(std::string color)
+		{
+			m_color = color;
+			return *this;
+		}
+
+		std::shared_ptr<Cat> Build()
+		{
+			return cat = std::make_shared<Cat>(m_nHeight, m_nWeight, m_color);
+		}
+
+	private:
+		std::shared_ptr<Cat> cat;
+
+		int m_nHeight{ 0 };
+		int m_nWeight{ 0 };
+		std::string m_color;
+	};
+
+	//ì•„ë˜ì™€ ê°™ì´ ì˜ë„ë¥¼ ì•Œë ¤ ì¤„ ìˆ˜ ìˆê³ , ì²˜ìŒì— ìƒì„±ìì˜ argumentë¥¼ initì„ í•˜ê³  ì‹œì‘ í•  ìˆ˜ ìˆë‹¤.
+
+	class WhiteBuilder :public CatBuilder
+	{
+	public:
+		WhiteBuilder()
+		{
+			__super::CatBuilder();
+			setColor("white");
+		};
+	};
+
+	class BlackBuilder :public CatBuilder
+	{
+	public:
+		BlackBuilder() {
+			__super::CatBuilder();
+			setColor("black");
+		};
+	};
+}
+
 //
 //Main
 // 	std::unique_ptr<CatBuilder> cat_builder = std::make_unique<CatBuilder>();
@@ -83,12 +89,12 @@
 // 	std::shared_ptr<Cat> cat = cat_builder->Build();
 // 	cat->print();
 
-	//Èå¸²½Ä ºô´õ 
+	//íë¦¼ì‹ ë¹Œë” 
 // 	std::unique_ptr<CatBuilder> cat_builder = std::make_unique<CatBuilder>();
 // 	std::shared_ptr<Cat> cat = cat_builder->setHeight(30).setWeight(7).setColor("Gray").Build();
 // 	cat->print();
 
-//¾Æ·¡¿Í °°ÀÌ ÀÇµµ¸¦ ¾Ë·Á ÁÙ ¼ö ÀÖ´Ù.. ´õ ³ªÀº ¹æ¹ıÀÌ ÀÖ´ÂÁö´Â °­±¸..
+//ì•„ë˜ì™€ ê°™ì´ ì˜ë„ë¥¼ ì•Œë ¤ ì¤„ ìˆ˜ ìˆë‹¤.. ë” ë‚˜ì€ ë°©ë²•ì´ ìˆëŠ”ì§€ëŠ” ê°•êµ¬..
 //std::unique_ptr<WhiteBuilder> white_cat = std::make_unique<WhiteBuilder>();
 //std::unique_ptr<BlackBuilder> black_cat = std::make_unique<BlackBuilder>();
 //std::shared_ptr<Cat> WhiteCat = white_cat->setHeight(30).setWeight(5).Build();

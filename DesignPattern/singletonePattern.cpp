@@ -1,3 +1,60 @@
-//SingletonePattern
-//ÇÏ³ªÀÇ process¿¡¼­ ÇÏ³ªÀÇ object¸¦ ÅëÇØ Àü¿ªÀ¸·Î »ç¿ëÀÌ ÇÊ¿ä ½Ã »ç¿ë(ex.¿ÜºÎ ³×Æ®¿öÅ©¶û ¿¬°á ½Ã »ç¿ë)
-// ÁÖÀÇ Á¡: ¸ÖÆ¼ ¾²·¹µå¿¡¼­ »ç¿ë ½Ã 
+ï»¿//SingletonePattern
+//í•˜ë‚˜ì˜ processì—ì„œ í•˜ë‚˜ì˜ objectë¥¼ í†µí•´ ì „ì—­ìœ¼ë¡œ ì‚¬ìš©ì´ í•„ìš” ì‹œ ì‚¬ìš©(ex.ì™¸ë¶€ ë„¤íŠ¸ì›Œí¬ë‘ ì—°ê²° ì‹œ ì‚¬ìš©)
+// ì˜¤ì§ í•œ ê°œì˜ í´ë˜ìŠ¤ ì¸ìŠ¤í„´ìŠ¤ë§Œì„ ê°–ë„ë¡ ë³´ì¥í•˜ê³ , ì´ì— ëŒ€í•œ ì „ì—­ì ì¸ ì ‘ê·¼ì ì„ ì œê³µ
+// ì£¼ì˜ ì : ë©€í‹° ì“°ë ˆë“œì—ì„œ ì‚¬ìš© ì‹œ ë°ì´í„° ì •ë³´ë¥¼ ë„£ì„ ë•Œ ì„ì¼ ìš°ë ¤ê°€ ìˆì–´ Mutex Lockë¥¼ ê±¸ì–´ ì¤˜ì•¼í•œë‹¤.
+#include <iostream>
+
+namespace SingleTone
+{
+	class Database
+	{
+	private:
+		static Database* database;
+		std::string name;
+
+	protected:
+		Database()
+		{
+		};
+	public:
+
+		void getName() { std::cout << name << std::endl; }
+
+		static Database* get()
+		{
+			if (database == nullptr)
+				database = new Database();
+
+			return database;
+		}
+
+		static void release()
+		{
+			if (database != nullptr)
+			{
+				delete database;
+				database = nullptr;
+			}
+		}
+
+		//ë³µì œ/ì´ë™ ìƒì„±ì/ì—°ì‚¬ì ì œê±°
+ 		Database(Database const&) = delete;
+ 		Database(Database&&) = delete;
+ 		Database& operator=(Database const&) = delete;
+ 		Database& operator=(Database&&) = delete;
+	};
+}
+//Main
+// SingleTone::Database* SingleTone::Database::database = nullptr;
+//SingleTone::Database* db = SingleTone::Database::get();
+//SingleTone::Database* db1 = SingleTone::Database::get();
+//
+//if (db == db1)
+//{
+//	std::cout << "It's Same" << std::endl;
+//}
+//else
+//{
+//	std::cout << "It's not Same" << std::endl;
+//}
+//SingleTone::Database::release();

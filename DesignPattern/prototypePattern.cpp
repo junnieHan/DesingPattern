@@ -1,60 +1,64 @@
-//prtotypePattern
-//±¸Á¶: client 
-//Client -> Protype Class <- obj or obj .......(Deep Copy)
-// copy°¡ µÇ±â Àü ±îÁö »óÅÂ¸¦ °¡Áö´Â °ÍÀÌ prtotype class
-// Ãß»ó ÆÑÅä¸® ÆĞÅÏ°ú´Â ¹İ´ë·Î, 
-// ÀåÁ¡:
-// 1. Á¸ÀçÇÏ´Â °´Ã¼¸¦ º¹»çÇÏ¿© , ÇØ´ç °´Ã¼¿¡ ¸Â°Ô Customize¸¦ ÇÏ´Â °Í
-// 2. »ı¼ºÇÒ °´Ã¼°¡ runtime¿¡¼­ »ı¼º ½Ã ÁÁÀ½
-// 3. 
-// C++Àº »ı¼ºÇÒ class ¸¶´Ù º¹»ç °´Ã¼¸¦ ÁöÁ¤ÇØÁà¾ßÇÏ´Â ´ÜÁ¡ÀÌ Á¸Àç. 
-// °³¼± ¹æ¹ı: Á÷·ÄÈ­ ÇÏ´Â °Íµµ ÇÏ³ªÀÇ ¹æ¹ı or 
-#include<iostream>
+ï»¿#include <iostream>
 
-//protype  class
-class Birds
+namespace ProtoType
 {
-public:
-	virtual void cry() = 0;
-	virtual void Color() = 0;
-	virtual Birds* clone() = 0;
-};
-
-//concreate prototypeÀº
-// °£´ÜÇÏ°Ô ½ºÄÉÄ¡¶ó°í »ı°¢ÇÏÀÚ ¿¹¸¦ µé¸é ChkienÀÇ ¿ïÀ½¼Ò¸®´Â µ¿ÀÏÇÏÁö¸¸, color°¡ ´Ù¸£´Ù.
-class Chiken : public Birds
-{
-public:
-	Chiken(const std::string& color){
-		strCrying = "GGogio";
-		m_strColor = color;
-	}
-	
-	void cry() override { printf(strCrying.c_str()); }// °øÅë ³»¿ë;
-	void Color() override{ printf(m_strColor.c_str()); }
-	Birds* clone() override
+	class Habitat
 	{
-		return new Chiken(strCrying);
-	}
+	public:
+		std::string getHabit() { return m_contury; }
+		void setHabit(std::string str) { m_contury = str; }
 
-private:
-	std::string strCrying;
-	std::string m_strColor;
+	private:
+		std::string m_contury;
 
-};
+	};
 
-//client°¡ ²À ÀÖ¾î¾ß ÇÏ´ÂÁö´Â ÀÇ¹®ÀÌ´Ù.
-//ÀÌÆÑÅä¸®¿¡¼­ ´Ù »ı¼º ÈÄ ÇÏ´Â ¹æ½Ä µµ ÀÖÁö¸¸ .... ±×°Ô ¿ÇÀº°É±î´Â ÃßÈÄ °øºÎ°¡ ´õ ÇÊ¿ä
-class BirdsFactory
-{
-public:
-	BirdsFactory(Birds* birds) :bird(birds) {};
-
-	Birds* MakeBird()
+	class Bird
 	{
-		return bird->clone();
-	}
-private:
-	Birds* bird;
+	private:
+		std::string m_WingColor;
+		std::string m_EyesColor;
+		std::string m_beakColor;
+		Habitat* habit;
 
-};
+	public:
+		explicit Bird(std::string strWing, std::string strEye, std::string strbeak)
+			:m_WingColor{ strWing }, m_EyesColor{ strEye }, m_beakColor{ strbeak }, habit{ new Habitat }
+		{
+		}
+		//ë³µì œ ìƒì„±ì
+
+		explicit Bird(const Bird& bird) :habit{ new Habitat }
+		{}
+		Bird& operator=(const Bird& bird)
+		{
+			// ê°™ì€ ê°’ì´ ë“¤ì–´ì˜¬ ê²½ìš° ì˜ˆì™¸ì²˜ë¦¬
+			if (this == &bird)
+				return *this;
+
+			m_WingColor = bird.m_WingColor;
+			m_beakColor = bird.m_beakColor;
+		}
+
+		~Bird() = default;
+
+
+	public:
+		void getBirdInfo() {
+			std::cout << "WingColor:" + m_WingColor << "EyeColor:" + m_EyesColor
+				<< "BeakColor:" + m_beakColor << std::endl;
+		}
+		void getBirdContury() { std::cout << habit->getHabit() << std::endl; }
+		void setBirdContury(std::string str) { habit->setHabit(str); }
+
+	};
+}
+//main
+//ProtoType::Bird K_Chiken("Brown", "Black", "Black");
+//ProtoType::Bird J_Chiken(K_Chiken);
+//K_Chiken.setBirdContury("Korea");
+//J_Chiken.setBirdContury("Japan");
+//K_Chiken.getBirdContury();
+//K_Chiken.getBirdInfo();
+//J_Chiken.getBirdContury();
+//J_Chiken.getBirdInfo();
