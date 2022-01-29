@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="adapterPattern.cpp" />
     <ClCompile Include="builderPattern.cpp" />
     <ClCompile Include="FactoryPattern.cpp" />
     <ClCompile Include="main.cpp" />
