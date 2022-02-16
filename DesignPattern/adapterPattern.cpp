@@ -1,5 +1,5 @@
-#include <iostream>
-//»ç¿ë ÇÒ ¼ö ¾ø´Â class¸¦ »ç¿ë ÇÒ ¼ö ÀÖ°Ô ÇØÁÖ³®.
+ï»¿#include <iostream>
+//ì‚¬ìš© í•  ìˆ˜ ì—†ëŠ” classë¥¼ ì‚¬ìš© í•  ìˆ˜ ìžˆê²Œ í•´ì£¼ë‚Ÿ.
 //Adapter Pattern
 
 namespace AdapterPtn
