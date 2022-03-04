@@ -36,5 +36,11 @@
     <ClCompile Include="facadePatttern.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="proxyPattern.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BridgePattern.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
