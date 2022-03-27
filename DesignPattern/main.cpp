@@ -7,23 +7,21 @@
 #include "FlyweightPattern.cpp"
 #include "compositePattern.cpp"
 #include "StrategyPattern.cpp"
+#include "statePattern.h"
+#include "templateMathodPattern.cpp"
+#include "CMDPattern.cpp"
 
 using namespace Flyweight;
 
 int main()
 {	
-	VendingMachine* machine = new VendingMachine();
+	std::shared_ptr<Invoker> invoker = std::make_shared<Invoker>();
 
-	machine->changeBeverage(new Coffe);
-	machine->makeBeverage();
+	auto Animal = std::make_shared<AnimanlCommand>();
+	auto fish = std::make_shared<FishCommand>();
+	invoker->addCommand(Animal);
+	invoker->addCommand(fish);
 
-	machine->changeBeverage(new COKE);
-	machine->makeBeverage();
-
-	machine->changeBeverage(new Juice);
-	machine->makeBeverage();
-
-	delete machine;
-	machine = nullptr;
+	invoker->runCommand();
 	return 0;
 }

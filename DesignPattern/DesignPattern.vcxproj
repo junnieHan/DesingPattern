@@ -142,6 +142,7 @@
     <ClCompile Include="adapterPattern.cpp" />
     <ClCompile Include="BridgePattern.cpp" />
     <ClCompile Include="builderPattern.cpp" />
+    <ClCompile Include="CMDPattern.cpp" />
     <ClCompile Include="compositePattern.cpp" />
     <ClCompile Include="facadePatttern.cpp" />
     <ClCompile Include="FactoryPattern.cpp" />
@@ -150,7 +151,12 @@
     <ClCompile Include="prototypePattern.cpp" />
     <ClCompile Include="proxyPattern.cpp" />
     <ClCompile Include="singletonePattern.cpp" />
+    <ClCompile Include="statePattern.cpp" />
     <ClCompile Include="StrategyPattern.cpp" />
+    <ClCompile Include="templateMathodPattern.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="statePattern.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
