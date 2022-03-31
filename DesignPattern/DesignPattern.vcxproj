@@ -148,6 +148,8 @@
     <ClCompile Include="FactoryPattern.cpp" />
     <ClCompile Include="FlyweightPattern.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="mementoPattern.cpp" />
+    <ClCompile Include="ObserverPattern.cpp" />
     <ClCompile Include="prototypePattern.cpp" />
     <ClCompile Include="proxyPattern.cpp" />
     <ClCompile Include="singletonePattern.cpp" />

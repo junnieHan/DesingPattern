@@ -10,18 +10,12 @@
 #include "statePattern.h"
 #include "templateMathodPattern.cpp"
 #include "CMDPattern.cpp"
+#include "observerPattern.cpp"
+#include "mementoPattern.cpp"
 
 using namespace Flyweight;
 
 int main()
 {	
-	std::shared_ptr<Invoker> invoker = std::make_shared<Invoker>();
-
-	auto Animal = std::make_shared<AnimanlCommand>();
-	auto fish = std::make_shared<FishCommand>();
-	invoker->addCommand(Animal);
-	invoker->addCommand(fish);
-
-	invoker->runCommand();
 	return 0;
 }

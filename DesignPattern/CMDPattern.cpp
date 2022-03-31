@@ -1,6 +1,6 @@
-//¸í·ÉÀ» Ãß»óÈ­ÇÏ¿© °´Ã¼¸¦ ´Ù·é´Ù.
-//¸ñÀû: Invoker¿Í receiverÀÇ ÀÇÁ¸¼ºÀ» Á¦°ÅÇÏ¿© receiverÀÌ º¯°æÀ» ÇØµµ È£ÃâÇÏ´Â ¼ö½ÅÀÚ´Â ±×´ë¿ë »ç¿ë °¡´É, ¸í·ÉÀ» object·Î ¸¸µé¾î Àç»ç¿ë °¡´É
-//¹æ¹ı: ½ÇÇà µÉ ±â´ÉÀ» Ä¸½¶È­
+ï»¿//ëª…ë ¹ì„ ì¶”ìƒí™”í•˜ì—¬ ê°ì²´ë¥¼ ë‹¤ë£¬ë‹¤.
+//ëª©ì : Invokerì™€ receiverì˜ ì˜ì¡´ì„±ì„ ì œê±°í•˜ì—¬ receiverì´ ë³€ê²½ì„ í•´ë„ í˜¸ì¶œí•˜ëŠ” ìˆ˜ì‹ ìëŠ” ê·¸ëŒ€ìš© ì‚¬ìš© ê°€ëŠ¥, ëª…ë ¹ì„ objectë¡œ ë§Œë“¤ì–´ ì¬ì‚¬ìš© ê°€ëŠ¥
+//ë°©ë²•: ì‹¤í–‰ ë  ê¸°ëŠ¥ì„ ìº¡ìŠí™”
 #include <iostream>
 #include <vector>
 
@@ -75,3 +75,12 @@ public:
 	};
 };
 
+
+//std::shared_ptr<Invoker> invoker = std::make_shared<Invoker>();
+//
+//auto Animal = std::make_shared<AnimanlCommand>();
+//auto fish = std::make_shared<FishCommand>();
+//invoker->addCommand(Animal);
+//invoker->addCommand(fish);
+//
+//invoker->runCommand();
